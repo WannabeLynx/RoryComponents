@@ -1,11 +1,12 @@
 <template>
   <button ref="buttonRef" type="button" :class="classes" @click="onClick" :style="style">
-    <span class="relative z-10">{{ label }}</span>
+    <Paragraph :color="primary ? 'text-white' : 'text-gray-800'" font="manrope" weight="bold" size="p2">{{ label }}</Paragraph>
   </button>
 </template>
 
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue';
+import Paragraph from './Paragraph.vue';
 
 const props = withDefaults(
   defineProps<{
@@ -54,9 +55,9 @@ const classes = computed(() => {
 
   // Size-specific classes
   const sizeClasses = {
-    small: ['text-xs', 'py-2.5', 'px-4'],
-    medium: ['text-sm', 'py-[13px]', 'px-5'],
-    large: ['text-base', 'py-4', 'px-6'],
+    small: ['h-10 px-2.5'],
+    medium: ['h-11 px-2.5'],
+    large: ['h-12 px-3'],
   };
 
   // Shape-specific classes
@@ -78,8 +79,8 @@ const classes = computed(() => {
 
   // Primary and secondary classes
   const primaryClasses = props.primary
-    ? ['bg-blue-500', 'text-white', 'border-transparent']
-    : ['bg-transparent', 'text-gray-800', 'border-gray-300'];
+    ? ['bg-blue-500', 'border-transparent']
+    : ['bg-transparent', 'border-gray-800'];
 
   return [
     ...baseClasses,
@@ -90,8 +91,7 @@ const classes = computed(() => {
 });
 
 const style = computed(() => ({
-  // This logic is still correct: it prevents backgroundColor from overriding the glow's bg-gray-900
-  backgroundColor: props.glow ? undefined : props.backgroundColor,
+  backgroundColor: props.glow ? undefined : props.primary ? props.backgroundColor : 'transparent',
 }));
 
 const onClick = () => {

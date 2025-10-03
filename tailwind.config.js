@@ -1,8 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
 
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
+        lora: ['Lora', 'serif'],
+      }
+    },
   },
   plugins: [],
 }
