@@ -11,7 +11,7 @@ interface Props {
   size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   weight?: 'regular' | 'medium' | 'semibold' | 'bold'
   font?: 'lora' | 'manrope'
-  color?: string
+  color?: 'primary' | 'white' | 'muted'
   underline?: boolean
   noWrap?: boolean
   breakWords?: boolean
@@ -21,31 +21,53 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'h1',
   weight: 'bold',
   font: 'lora',
-  color: 'text-white',
+  color: 'white',
   underline: false,
   noWrap: false,
   breakWords: false,
 })
 
-const styles = computed(() => ({
-  'text-4xl': props.size === 'h1',
-  'text-3xl': props.size === 'h2',
-  'text-2xl': props.size === 'h3',
-  'text-xl': props.size === 'h4',
-  'text-lg': props.size === 'h5',
-  'text-base': props.size === 'h6',
+// --- COMPUTED PROPERTIES ---
+const sizeMap = {
+  h1: 'text-4xl',
+  h2: 'text-3xl',
+  h3: 'text-2xl',
+  h4: 'text-xl',
+  h5: 'text-lg',
+  h6: 'text-base',
+}
 
-  'font-normal': props.weight === 'regular',
-  'font-medium': props.weight === 'medium',
-  'font-semibold': props.weight === 'semibold',
-  'font-bold': props.weight === 'bold',
+const weightMap = {
+  regular: 'font-normal',
+  medium: 'font-medium',
+  semibold: 'font-semibold',
+  bold: 'font-bold',
+}
 
-  'font-lora': props.font === 'lora',
-  'font-manrope': props.font === 'manrope',
+const fontMap = {
+  lora: 'font-lora',
+  manrope: 'font-manrope',
+}
 
-  [props.color]: true,
-  'underline': props.underline,
-  'whitespace-nowrap': props.noWrap,
-  'break-words': props.breakWords,
-}))
+const colorMap = {
+  primary: 'text-primary',
+  white: 'text-white',
+  muted: 'text-foreground/60',
+}
+
+const styles = computed(() => {
+  const classes = [
+    sizeMap[props.size],
+    'leading-tight',
+    weightMap[props.weight],
+    fontMap[props.font],
+    colorMap[props.color],
+  ]
+
+  if (props.underline) classes.push('underline')
+  if (props.noWrap) classes.push('whitespace-nowrap')
+  if (props.breakWords) classes.push('break-words')
+
+  return classes
+})
 </script>

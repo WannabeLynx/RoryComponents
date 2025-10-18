@@ -6,52 +6,89 @@ const meta: Meta<typeof Header> = {
   component: Header,
   tags: ['autodocs'],
   argTypes: {
-    size: { control: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
-    weight: { control: 'select', options: ['regular', 'medium', 'semibold', 'bold'] },
-    font: { control: 'select', options: ['lora', 'manrope'] },
-    color: { control: 'color' },
-    underline: { control: 'boolean' },
-    noWrap: { control: 'boolean' },
-    breakWords: { control: 'boolean' },
-    default: { control: 'text' },
+    size: {
+      control: 'select',
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      description: 'The font size of the header',
+    },
+    weight: {
+      control: 'select',
+      options: ['regular', 'medium', 'semibold', 'bold'],
+      description: 'The font weight of the header',
+    },
+    font: {
+      control: 'select',
+      options: ['lora', 'manrope'],
+      description: 'The font family of the header',
+    },
+    color: {
+      control: 'select',
+      options: ['primary', 'white', 'muted'],
+      description: 'The theme-based color of the header',
+    },
+    underline: {
+      control: 'boolean'
+    },
+    noWrap: {
+      control: 'boolean'
+    },
+    breakWords: {
+      control: 'boolean'
+    },
+    default: {
+      control: 'text',
+      name: 'content',
+      description: 'The text content of the header',
+    },
   },
-  args: {
-    default: 'This is a header.',
-  }
-};
-
-export default meta;
-type Story = StoryObj<typeof Header>;
-
-export const Default: Story = {
   args: {
     size: 'h1',
     weight: 'bold',
     font: 'lora',
-    color: 'black',
-  },
-};
-
-export const AllOptions: Story = {
-  name: 'All Options',
-  args: {
-    size: 'h1',
-    weight: 'regular',
-    font: 'lora',
-    color: 'black',
+    color: 'white',
     underline: false,
     noWrap: false,
     breakWords: false,
-    default: 'This is a header with all options.'
+    default: 'This is a header.',
   },
-  argTypes: {
-    size: { control: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
-    weight: { control: 'select', options: ['regular', 'medium', 'semibold', 'bold'] },
-    font: { control: 'select', options: ['lora', 'manrope'] },
-    color: { control: 'color' },
-    underline: { control: 'boolean' },
-    noWrap: { control: 'boolean' },
-    breakWords: { control: 'boolean' },
-    default: { control: 'text' },
-  }
+  render: (args) => ({
+    components: { Header },
+    setup() {
+      return { args };
+    },
+    template: `<Header v-bind="args">{{ args.default }}</Header>`,
+  }),
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const White: Story = {
+  args: {
+    color: 'white',
+  },
+};
+
+export const Primary: Story = {
+  args: {
+    color: 'primary',
+    default: 'This header uses the primary color.',
+  },
+};
+
+export const Muted: Story = {
+  args: {
+    color: 'muted',
+    default: 'This is a muted header for secondary text.',
+  },
+};
+
+export const BoldManrope: Story = {
+  name: 'Bold Manrope Font',
+  args: {
+    size: 'h2',
+    weight: 'bold',
+    font: 'manrope',
+    default: 'A bolded, larger header with the Manrope font.',
+  },
 };
