@@ -12,7 +12,7 @@
 
   <!-- Starfield Variant (Redesigned with new Orbit method) -->
   <div v-else-if="variant === 'starfield'">
-		<Caption class="absolute bottom-11 left-1/2 -translate-x-1/2">Scroll</Caption>
+		<Caption :breakWords="false" color="primary" font="lora" :noWrap="false" size="c1" :underline="false" weight="regular" class="absolute bottom-11 left-1/2 -translate-x-1/2">Scroll</Caption>
 		<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce flex items-end justify-center">
 			<div class="relative w-16 h-16 flex items-center justify-center">
 				<div class="w-4 h-4 bg-primary rounded-full shadow-[0_0_10px_theme(colors.primary)]"></div>
