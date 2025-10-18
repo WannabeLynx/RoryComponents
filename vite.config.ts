@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite'
+import dts from 'vite-plugin-dts';
 
 // https://vite.dev/config/
 import path from 'node:path';
@@ -13,7 +14,26 @@ export default defineConfig({
   plugins: [
     vue(),
     tailwindcss(),
+    dts({
+      insertTypesEntry: true,
+    }),
   ],
+  build: {
+    lib: {
+      entry: path.resolve(dirname, 'src/index.ts'),
+      name: 'RoryComponents',
+      formats: ['es', 'cjs'],
+      fileName: (format) => `rory-components.${format}.js`,
+    },
+    rollupOptions: {
+      external: ['vue'],
+      output: {
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
