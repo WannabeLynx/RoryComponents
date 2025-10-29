@@ -48,9 +48,9 @@ export const Default: Story = {
   args: {
     title: 'Connect With Me',
     links: [
-      { label: 'GitHub', url: 'https://github.com', icon: GithubIcon },
-      { label: 'LinkedIn', url: 'https://linkedin.com', icon: LinkedinIcon },
-      { label: 'Email', url: 'mailto:hello@example.com', icon: MailIcon },
+      { label: 'GitHub', url: 'https://github.com/WannabeLynx', icon: GithubIcon },
+      { label: 'LinkedIn', url: 'https://linkedin.com/in/nino-baer/', icon: LinkedinIcon },
+      { label: 'Email', url: 'mailto:ninoleonbaer@gmail.com', icon: MailIcon },
     ],
   },
 };

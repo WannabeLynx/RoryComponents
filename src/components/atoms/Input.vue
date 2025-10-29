@@ -7,13 +7,7 @@ import { computed } from 'vue';
 
 const props = withDefaults(
   defineProps<{
-    /**
-     * The placeholder of the input
-     */
     placeholder?: string;
-    /**
-     * size of the input
-     */
     size?: 'small' | 'medium' | 'large';
   }>(),
   { placeholder: '' }

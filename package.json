@@ -1,14 +1,23 @@
 {
   "name": "rory-components",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "private": false,
   "type": "module",
   "main": "./dist/rory-components.cjs.js",
   "module": "./dist/rory-components.es.js",
   "types": "./dist/index.d.ts",
+  "style": "./dist/rory-components.css",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/rory-components.es.js",
+      "require": "./dist/rory-components.cjs.js"
+    },
+    "./style.css": "./dist/rory-components.css"
+  },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
@@ -20,7 +29,8 @@
     "type-check": "vue-tsc --build",
     "storybook": "BROWSER=google-chrome-stable storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tailwind:init": "tailwindcss init -p"
+    "tailwind:init": "tailwindcss init -p",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",

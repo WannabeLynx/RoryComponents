@@ -1,3 +1,4 @@
+import './assets/tailwind.css';
 import Badge from './components/atoms/Badge.vue';
 import Button from './components/atoms/Button.vue';
 import Caption from './components/atoms/Caption.vue';
