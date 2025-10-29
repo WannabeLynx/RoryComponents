@@ -16,9 +16,11 @@ export default defineConfig({
     tailwindcss(),
     dts({
       insertTypesEntry: true,
+      tsconfigPath: './tsconfig.app.json'
     }),
   ],
   build: {
+    cssCodeSplit: true,
     lib: {
       entry: path.resolve(dirname, 'src/index.ts'),
       name: 'RoryComponents',
@@ -30,6 +32,12 @@ export default defineConfig({
       output: {
         globals: {
           vue: 'Vue',
+        },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'index.css') {
+            return 'rory-components.css';
+          }
+          return assetInfo.name;
         },
       },
     },

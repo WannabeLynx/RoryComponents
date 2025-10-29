@@ -1,5 +1,4 @@
 <template>
-  <!-- Mouse Variant (No changes here) -->
   <div v-if="variant === 'mouse'" class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
     <div class="relative w-8 h-12 border-2 border-primary rounded-full flex items-center justify-center overflow-hidden">
       <div 
@@ -10,7 +9,6 @@
     </div>
   </div>
 
-  <!-- Starfield Variant (Redesigned with new Orbit method) -->
   <div v-else-if="variant === 'starfield'">
 		<Caption :breakWords="false" color="primary" font="lora" :noWrap="false" size="c1" :underline="false" weight="regular" class="absolute bottom-11 left-1/2 -translate-x-1/2">Scroll</Caption>
 		<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce flex items-end justify-center">
@@ -36,12 +34,9 @@ const props = withDefaults(defineProps<{
   variant: 'mouse',
 });
 
-// --- STATE FOR MOUSE VARIANT ---
 const scrollAnim = ref(false);
 let intervalId: ReturnType<typeof setInterval> | null = null;
 
-
-// --- LIFECYCLE HOOKS ---
 const setupAnimation = (variant: 'mouse' | 'starfield') => {
   if (intervalId) {
     clearInterval(intervalId);

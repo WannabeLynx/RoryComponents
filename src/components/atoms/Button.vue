@@ -7,7 +7,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
-// Base classes shared by all variants
 const baseClasses = [
   'inline-flex',
   'items-center',
@@ -29,7 +28,6 @@ const baseClasses = [
   'aria-invalid:border-destructive',
 ];
 
-// Variant-specific classes
 const variantClasses = {
   default: 'bg-primary text-primary-foreground hover:bg-primary/90',
   destructive:
@@ -42,7 +40,6 @@ const variantClasses = {
   glow: 'group bg-transparent border-2 border-primary text-primary rounded-lg hover:bg-primary/10 duration-300 hover:shadow-[0_0_20px_rgba(var(--ring-rgb)_/_0.5)]',
 };
 
-// Size-specific classes
 const sizeClasses = {
   default: 'h-9 px-4 py-2 has-[>svg]:px-3',
   sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
@@ -72,7 +69,6 @@ const props = withDefaults(
   }
 );
 
-// --- Computed Classes ---
 const buttonClasses = computed(() => {
   return [
     ...baseClasses,

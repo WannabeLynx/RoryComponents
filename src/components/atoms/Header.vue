@@ -27,7 +27,6 @@ const props = withDefaults(defineProps<Props>(), {
   breakWords: false,
 })
 
-// --- COMPUTED PROPERTIES ---
 const sizeMap = {
   h1: 'text-4xl',
   h2: 'text-3xl',
