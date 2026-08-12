@@ -17,14 +17,19 @@ const classes = computed(() => {
   const baseClasses = [
     'font-sans',
     'leading-normal',
-    'inline-block',
-    'rounded',
+    'block',
+    'w-full',
+    'rounded-[2px]',
+    'bg-background',
     'border',
-    'border-gray-300',
+    'border-border',
+    'text-foreground',
+    'placeholder:text-foreground/40',
     'focus:outline-none',
-    'focus:border-blue-500',
-    'focus:ring-2',
-    'focus:ring-blue-200',
+    'focus:border-primary/60',
+    'focus:ring-[3px]',
+    'focus:ring-primary/15',
+    'transition-colors',
   ];
 
   const sizeClasses = {

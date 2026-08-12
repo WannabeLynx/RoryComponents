@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Manrope:wght@300..700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-manrope: 'Manrope', sans-serif;
   --font-lora: 'Lora', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --animate-pulse-fade: pulse-fade 3s infinite ease-in-out;
   --animate-spin-slow: spin 4s linear infinite;
@@ -68,32 +68,32 @@
 
 :root {
   --font-size: 16px;
-  --background: #050810;
-  --foreground: #E6F1FF;
-  --card: rgba(10, 25, 47, 0.6);
-  --card-foreground: #E6F1FF;
-  --popover: #0A192F;
-  --popover-foreground: #E6F1FF;
-  --primary-rgb: 100 255 218; /* #64FFDA */
+  --background: #070B14;          /* void / page */
+  --foreground: #EAF0FA;          /* starlight */
+  --card: rgba(12, 18, 32, 0.6);  /* surface w/ alpha */
+  --card-foreground: #EAF0FA;
+  --popover: #0C1220;             /* panel / plate surface */
+  --popover-foreground: #EAF0FA;
+  --primary-rgb: 243 201 105;     /* #F3C969 — starlight gold, the single lead accent */
   --primary: rgb(var(--primary-rgb));
-  --primary-foreground: #050810;
-  --secondary: #E040FB;
-  --secondary-foreground: #E6F1FF;
-  --muted: rgba(230, 241, 255, 0.1);
-  --muted-foreground: rgba(230, 241, 255, 0.6);
-  --accent: #FFC107;
-  --accent-foreground: #050810;
-  --destructive: #d4183d;
+  --primary-foreground: #070B14;
+  --secondary: #74E3C8;           /* refined teal — rare functional signal only */
+  --secondary-foreground: #06231D;
+  --muted: rgba(234, 241, 250, 0.08);
+  --muted-foreground: rgba(234, 241, 250, 0.55);
+  --accent: #F3C969;              /* single accent stays in the gold family */
+  --accent-foreground: #070B14;
+  --destructive: #E5484D;
   --destructive-foreground: #ffffff;
-  --border: rgba(100, 255, 218, 0.2);
-  --input: rgba(100, 255, 218, 0.1);
-  --input-background: rgba(10, 25, 47, 0.4);
+  --border: rgba(150, 180, 220, 0.14);  /* cool atlas hairline */
+  --input: rgba(150, 180, 220, 0.10);
+  --input-background: rgba(12, 18, 32, 0.6);
   --switch-background: #cbced4;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring-rgb: 100 255 218;
+  --ring-rgb: 243 201 105;
   --ring: rgb(var(--ring-rgb));
-  --radius: 0.5rem;
+  --radius: 2px;                  /* sharp — instrument, not soft card */
 }
 
 .dark {

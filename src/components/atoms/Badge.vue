@@ -1,12 +1,16 @@
 <template>
   <div :class="styles">
-    <div v-if="variant === 'skill'" class="p-2 rounded-lg transition-all duration-300 bg-primary/10 border border-primary/25">
+    <div class="flex-none w-9 h-9 grid place-items-center rounded-[2px] border border-border text-primary [&_svg]:w-[18px] [&_svg]:h-[18px]">
       <slot name="icon" />
     </div>
-    <slot v-else name="icon" />
-    <span class="text-foreground transition-colors" :class="{ 'group-hover:text-primary': variant === 'skill' }">
-      {{ label }}
-    </span>
+    <div class="flex flex-col gap-0.5 leading-tight min-w-0">
+      <span v-if="designation" class="font-mono text-[0.58rem] tracking-[0.16em] uppercase text-foreground/40">
+        {{ designation }}
+      </span>
+      <span class="text-foreground text-[0.95rem] transition-colors group-hover:text-primary truncate">
+        {{ label }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -16,6 +20,7 @@ import { computed } from 'vue';
 interface Props {
   label: string;
   variant?: 'principle' | 'skill';
+  designation?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,20 +32,21 @@ const styles = computed(() => {
     'group',
     'flex',
     'items-center',
-    'p-4',
-    'rounded-lg',
-    'bg-popover/40',
+    'gap-3',
+    'p-3.5',
+    'rounded-[2px]',
+    'bg-transparent',
     'border',
-    'border-primary/20',
-    'hover:border-primary/50',
+    'border-border',
+    'hover:border-primary/40',
+    'hover:bg-primary/[0.04]',
     'transition-all',
     'duration-300',
-    'hover:shadow-[0_0_15px_rgba(var(--primary-rgb)_/_0.2)]',
   ];
 
   const variantStyles = {
-    principle: ['gap-3'],
-    skill: ['gap-4', 'hover:translate-x-2'],
+    principle: [] as string[],
+    skill: ['hover:translate-x-1'],
   };
 
   return [...baseStyles, ...variantStyles[props.variant]];
